@@ -1,0 +1,646 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EF029B6824C4F20800C3C4ED /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF029B6724C4F20800C3C4ED /* MapViewController.swift */; };
+		EF241C5B24C37CAA00F0CDB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C5A24C37CAA00F0CDB0 /* AppDelegate.swift */; };
+		EF241C5D24C37CAA00F0CDB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C5C24C37CAA00F0CDB0 /* SceneDelegate.swift */; };
+		EF241C5F24C37CAA00F0CDB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C5E24C37CAA00F0CDB0 /* ViewController.swift */; };
+		EF241C6524C37CAB00F0CDB0 /* SList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF241C6324C37CAB00F0CDB0 /* SList.xcdatamodeld */; };
+		EF241C6724C37CAC00F0CDB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF241C6624C37CAC00F0CDB0 /* Assets.xcassets */; };
+		EF241C6A24C37CAC00F0CDB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF241C6824C37CAC00F0CDB0 /* LaunchScreen.storyboard */; };
+		EF241C7524C37CAC00F0CDB0 /* SListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C7424C37CAC00F0CDB0 /* SListTests.swift */; };
+		EF241C8024C37CAC00F0CDB0 /* SListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C7F24C37CAC00F0CDB0 /* SListUITests.swift */; };
+		EF241C9324C37F6600F0CDB0 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C9224C37F6600F0CDB0 /* HomeTableViewCell.swift */; };
+		EF241C9524C3803E00F0CDB0 /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C9424C3803E00F0CDB0 /* CircularProgress.swift */; };
+		EF241C9724C380CE00F0CDB0 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C9624C380CE00F0CDB0 /* AddListViewController.swift */; };
+		EF241C9924C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C9824C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EF241C7124C37CAC00F0CDB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF241C4F24C37CAA00F0CDB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF241C5624C37CAA00F0CDB0;
+			remoteInfo = SList;
+		};
+		EF241C7C24C37CAC00F0CDB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF241C4F24C37CAA00F0CDB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF241C5624C37CAA00F0CDB0;
+			remoteInfo = SList;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EF029B6724C4F20800C3C4ED /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		EF241C5724C37CAA00F0CDB0 /* SList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF241C5A24C37CAA00F0CDB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EF241C5C24C37CAA00F0CDB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EF241C5E24C37CAA00F0CDB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EF241C6424C37CAB00F0CDB0 /* SList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SList.xcdatamodel; sourceTree = "<group>"; };
+		EF241C6624C37CAC00F0CDB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF241C6924C37CAC00F0CDB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EF241C6B24C37CAC00F0CDB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF241C7024C37CAC00F0CDB0 /* SListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF241C7424C37CAC00F0CDB0 /* SListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SListTests.swift; sourceTree = "<group>"; };
+		EF241C7624C37CAC00F0CDB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF241C7B24C37CAC00F0CDB0 /* SListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF241C7F24C37CAC00F0CDB0 /* SListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SListUITests.swift; sourceTree = "<group>"; };
+		EF241C8124C37CAC00F0CDB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF241C9224C37F6600F0CDB0 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		EF241C9424C3803E00F0CDB0 /* CircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
+		EF241C9624C380CE00F0CDB0 /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
+		EF241C9824C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewCellTableViewCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EF241C5424C37CAA00F0CDB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF241C6D24C37CAC00F0CDB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF241C7824C37CAC00F0CDB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EF241C4E24C37CAA00F0CDB0 = {
+			isa = PBXGroup;
+			children = (
+				EF241C5924C37CAA00F0CDB0 /* SList */,
+				EF241C7324C37CAC00F0CDB0 /* SListTests */,
+				EF241C7E24C37CAC00F0CDB0 /* SListUITests */,
+				EF241C5824C37CAA00F0CDB0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EF241C5824C37CAA00F0CDB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF241C5724C37CAA00F0CDB0 /* SList.app */,
+				EF241C7024C37CAC00F0CDB0 /* SListTests.xctest */,
+				EF241C7B24C37CAC00F0CDB0 /* SListUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF241C5924C37CAA00F0CDB0 /* SList */ = {
+			isa = PBXGroup;
+			children = (
+				EF241C9124C37F0200F0CDB0 /* viewcontrollers */,
+				EF241C9024C37EF900F0CDB0 /* cells */,
+				EF241C8D24C37ED500F0CDB0 /* viewmodel */,
+				EF241C5A24C37CAA00F0CDB0 /* AppDelegate.swift */,
+				EF241C5C24C37CAA00F0CDB0 /* SceneDelegate.swift */,
+				EF241C6624C37CAC00F0CDB0 /* Assets.xcassets */,
+				EF241C6824C37CAC00F0CDB0 /* LaunchScreen.storyboard */,
+				EF241C6B24C37CAC00F0CDB0 /* Info.plist */,
+				EF241C6324C37CAB00F0CDB0 /* SList.xcdatamodeld */,
+				EF241C9424C3803E00F0CDB0 /* CircularProgress.swift */,
+			);
+			path = SList;
+			sourceTree = "<group>";
+		};
+		EF241C7324C37CAC00F0CDB0 /* SListTests */ = {
+			isa = PBXGroup;
+			children = (
+				EF241C7424C37CAC00F0CDB0 /* SListTests.swift */,
+				EF241C7624C37CAC00F0CDB0 /* Info.plist */,
+			);
+			path = SListTests;
+			sourceTree = "<group>";
+		};
+		EF241C7E24C37CAC00F0CDB0 /* SListUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EF241C7F24C37CAC00F0CDB0 /* SListUITests.swift */,
+				EF241C8124C37CAC00F0CDB0 /* Info.plist */,
+			);
+			path = SListUITests;
+			sourceTree = "<group>";
+		};
+		EF241C8D24C37ED500F0CDB0 /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewmodel;
+			sourceTree = "<group>";
+		};
+		EF241C9024C37EF900F0CDB0 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				EF241C9224C37F6600F0CDB0 /* HomeTableViewCell.swift */,
+				EF241C9824C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		EF241C9124C37F0200F0CDB0 /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				EF241C9624C380CE00F0CDB0 /* AddListViewController.swift */,
+				EF241C5E24C37CAA00F0CDB0 /* ViewController.swift */,
+				EF029B6724C4F20800C3C4ED /* MapViewController.swift */,
+			);
+			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EF241C5624C37CAA00F0CDB0 /* SList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF241C8424C37CAC00F0CDB0 /* Build configuration list for PBXNativeTarget "SList" */;
+			buildPhases = (
+				EF241C5324C37CAA00F0CDB0 /* Sources */,
+				EF241C5424C37CAA00F0CDB0 /* Frameworks */,
+				EF241C5524C37CAA00F0CDB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SList;
+			productName = SList;
+			productReference = EF241C5724C37CAA00F0CDB0 /* SList.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EF241C6F24C37CAC00F0CDB0 /* SListTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF241C8724C37CAC00F0CDB0 /* Build configuration list for PBXNativeTarget "SListTests" */;
+			buildPhases = (
+				EF241C6C24C37CAC00F0CDB0 /* Sources */,
+				EF241C6D24C37CAC00F0CDB0 /* Frameworks */,
+				EF241C6E24C37CAC00F0CDB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF241C7224C37CAC00F0CDB0 /* PBXTargetDependency */,
+			);
+			name = SListTests;
+			productName = SListTests;
+			productReference = EF241C7024C37CAC00F0CDB0 /* SListTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EF241C7A24C37CAC00F0CDB0 /* SListUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF241C8A24C37CAC00F0CDB0 /* Build configuration list for PBXNativeTarget "SListUITests" */;
+			buildPhases = (
+				EF241C7724C37CAC00F0CDB0 /* Sources */,
+				EF241C7824C37CAC00F0CDB0 /* Frameworks */,
+				EF241C7924C37CAC00F0CDB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF241C7D24C37CAC00F0CDB0 /* PBXTargetDependency */,
+			);
+			name = SListUITests;
+			productName = SListUITests;
+			productReference = EF241C7B24C37CAC00F0CDB0 /* SListUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF241C4F24C37CAA00F0CDB0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "naga vineel golla";
+				TargetAttributes = {
+					EF241C5624C37CAA00F0CDB0 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					EF241C6F24C37CAC00F0CDB0 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = EF241C5624C37CAA00F0CDB0;
+					};
+					EF241C7A24C37CAC00F0CDB0 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = EF241C5624C37CAA00F0CDB0;
+					};
+				};
+			};
+			buildConfigurationList = EF241C5224C37CAA00F0CDB0 /* Build configuration list for PBXProject "SList" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EF241C4E24C37CAA00F0CDB0;
+			productRefGroup = EF241C5824C37CAA00F0CDB0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF241C5624C37CAA00F0CDB0 /* SList */,
+				EF241C6F24C37CAC00F0CDB0 /* SListTests */,
+				EF241C7A24C37CAC00F0CDB0 /* SListUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF241C5524C37CAA00F0CDB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF241C6A24C37CAC00F0CDB0 /* LaunchScreen.storyboard in Resources */,
+				EF241C6724C37CAC00F0CDB0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF241C6E24C37CAC00F0CDB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF241C7924C37CAC00F0CDB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EF241C5324C37CAA00F0CDB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF241C9924C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift in Sources */,
+				EF241C5F24C37CAA00F0CDB0 /* ViewController.swift in Sources */,
+				EF241C9524C3803E00F0CDB0 /* CircularProgress.swift in Sources */,
+				EF241C9724C380CE00F0CDB0 /* AddListViewController.swift in Sources */,
+				EF029B6824C4F20800C3C4ED /* MapViewController.swift in Sources */,
+				EF241C9324C37F6600F0CDB0 /* HomeTableViewCell.swift in Sources */,
+				EF241C6524C37CAB00F0CDB0 /* SList.xcdatamodeld in Sources */,
+				EF241C5B24C37CAA00F0CDB0 /* AppDelegate.swift in Sources */,
+				EF241C5D24C37CAA00F0CDB0 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF241C6C24C37CAC00F0CDB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF241C7524C37CAC00F0CDB0 /* SListTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF241C7724C37CAC00F0CDB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF241C8024C37CAC00F0CDB0 /* SListUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EF241C7224C37CAC00F0CDB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF241C5624C37CAA00F0CDB0 /* SList */;
+			targetProxy = EF241C7124C37CAC00F0CDB0 /* PBXContainerItemProxy */;
+		};
+		EF241C7D24C37CAC00F0CDB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF241C5624C37CAA00F0CDB0 /* SList */;
+			targetProxy = EF241C7C24C37CAC00F0CDB0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EF241C6824C37CAC00F0CDB0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF241C6924C37CAC00F0CDB0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EF241C8224C37CAC00F0CDB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EF241C8324C37CAC00F0CDB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EF241C8524C37CAC00F0CDB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BM54VDV37Y;
+				INFOPLIST_FILE = SList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vineelgolla.SList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EF241C8624C37CAC00F0CDB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BM54VDV37Y;
+				INFOPLIST_FILE = SList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vineelgolla.SList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EF241C8824C37CAC00F0CDB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BM54VDV37Y;
+				INFOPLIST_FILE = SListTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vineelgolla.SListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SList.app/SList";
+			};
+			name = Debug;
+		};
+		EF241C8924C37CAC00F0CDB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BM54VDV37Y;
+				INFOPLIST_FILE = SListTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vineelgolla.SListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SList.app/SList";
+			};
+			name = Release;
+		};
+		EF241C8B24C37CAC00F0CDB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BM54VDV37Y;
+				INFOPLIST_FILE = SListUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vineelgolla.SListUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SList;
+			};
+			name = Debug;
+		};
+		EF241C8C24C37CAC00F0CDB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BM54VDV37Y;
+				INFOPLIST_FILE = SListUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vineelgolla.SListUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SList;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EF241C5224C37CAA00F0CDB0 /* Build configuration list for PBXProject "SList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF241C8224C37CAC00F0CDB0 /* Debug */,
+				EF241C8324C37CAC00F0CDB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF241C8424C37CAC00F0CDB0 /* Build configuration list for PBXNativeTarget "SList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF241C8524C37CAC00F0CDB0 /* Debug */,
+				EF241C8624C37CAC00F0CDB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF241C8724C37CAC00F0CDB0 /* Build configuration list for PBXNativeTarget "SListTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF241C8824C37CAC00F0CDB0 /* Debug */,
+				EF241C8924C37CAC00F0CDB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF241C8A24C37CAC00F0CDB0 /* Build configuration list for PBXNativeTarget "SListUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF241C8B24C37CAC00F0CDB0 /* Debug */,
+				EF241C8C24C37CAC00F0CDB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EF241C6324C37CAB00F0CDB0 /* SList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EF241C6424C37CAB00F0CDB0 /* SList.xcdatamodel */,
+			);
+			currentVersion = EF241C6424C37CAB00F0CDB0 /* SList.xcdatamodel */;
+			path = SList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EF241C4F24C37CAA00F0CDB0 /* Project object */;
+}

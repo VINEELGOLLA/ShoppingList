@@ -13,32 +13,38 @@ class AddListViewController: UIViewController {
     lazy var ListName : UITextField = {
         let namefield = UITextField()
         namefield.translatesAutoresizingMaskIntoConstraints = false
-        namefield.placeholder = "List Name"
         namefield.keyboardType = .default
         namefield.returnKeyType = .done
         namefield.font = UIFont.systemFont(ofSize: 18)
         namefield.clearButtonMode = UITextField.ViewMode.whileEditing;
         namefield.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        namefield.borderStyle = .roundedRect
+        namefield.borderStyle = .none
+        namefield.backgroundColor = UIColor.opaqueSeparator
         namefield.layer.shadowColor = UIColor.darkGray.cgColor
         namefield.layer.shadowOpacity = 0.2
         namefield.layer.shadowOffset = .zero
         namefield.layer.shadowRadius = 1
         namefield.layer.cornerRadius = 10
+        namefield.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
         return namefield
     }()
     
     lazy var Location : UITextField = {
         let namefield = UITextField()
         namefield.translatesAutoresizingMaskIntoConstraints = false
-        namefield.placeholder = "Location (Optional)"
+        //namefield.placeholder = "Location (Optional)"
         namefield.keyboardType = .default
         namefield.returnKeyType = .done
         namefield.font = UIFont.systemFont(ofSize: 18)
         namefield.clearButtonMode = UITextField.ViewMode.whileEditing;
         namefield.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        namefield.backgroundColor = UIColor.opaqueSeparator
+        namefield.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
+
+
+        namefield.borderStyle = .none
         
-        namefield.borderStyle = .roundedRect
+        
               
         namefield.layer.shadowColor = UIColor.darkGray.cgColor
         namefield.layer.shadowOpacity = 0.2
@@ -89,6 +95,17 @@ class AddListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.setToolbarHidden(false, animated: false)
+        navigationController?.toolbar.backgroundColor = UIColor.white
+        
+        var items = [UIBarButtonItem]()
+        items.append(
+            UIBarButtonItem(title: "Add Items", style: .plain, target: self, action: nil)
+        )
+        
+        toolbarItems = items
+        
+        
         view.backgroundColor = UIColor.white
         
         setupview()
@@ -99,29 +116,32 @@ class AddListViewController: UIViewController {
         
         Location.delegate = self
         
+        
+
+        
     }
     
     func setupview() {
         
         view.addSubview(topstack)
-        view.addSubview(AddItemsLabel)
-        view.addSubview(AddItemsIcon)
+        //view.addSubview(AddItemsLabel)
+        //view.addSubview(AddItemsIcon)
         
         topstack.addArrangedSubview(ListName)
         topstack.addArrangedSubview(Location)
         
         topstack.topAnchor.constraint(equalTo: view.topAnchor, constant: 110).isActive = true
-        topstack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
-        topstack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
+        topstack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
+        topstack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
         topstack.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        AddItemsLabel.topAnchor.constraint(equalTo: topstack.bottomAnchor, constant: 20).isActive = true
-        AddItemsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        AddItemsLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        AddItemsIcon.topAnchor.constraint(equalTo: topstack.bottomAnchor, constant: 20).isActive = true
-        AddItemsIcon.leadingAnchor.constraint(equalTo: AddItemsLabel.trailingAnchor, constant: 0).isActive = true
-        AddItemsIcon.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//        AddItemsLabel.topAnchor.constraint(equalTo: topstack.bottomAnchor, constant: 20).isActive = true
+//        AddItemsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+//        AddItemsLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//
+//        AddItemsIcon.topAnchor.constraint(equalTo: topstack.bottomAnchor, constant: 20).isActive = true
+//        AddItemsIcon.leadingAnchor.constraint(equalTo: AddItemsLabel.trailingAnchor, constant: 0).isActive = true
+//        AddItemsIcon.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
     }
     
@@ -130,7 +150,7 @@ class AddListViewController: UIViewController {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
-        tableView.topAnchor.constraint(equalTo: AddItemsLabel.bottomAnchor, constant: 5).isActive = true
+        tableView.topAnchor.constraint(equalTo: topstack.bottomAnchor, constant: 5).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
@@ -162,7 +182,9 @@ class AddListViewController: UIViewController {
 
 extension AddListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sec1.count
+        
+        tableView.isHidden = true
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -189,6 +211,21 @@ extension AddListViewController : UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
         let map = MapViewController()
-        present(map, animated: true, completion: nil)
+        map.delegate = self
+       //navigationController?.pushViewController(map, animated: true)
+        //map.isModalInPresentation = true
+        
+        
+        self.present(map, animated: true)
+        //present(map, animated: true, completion: nil)
     }
+}
+
+extension AddListViewController : locationdataSourceDelegate {
+func locationtextfield(selectedlocation: SelectedLocation) {
+    Location.text = selectedlocation.locationName
+    
+    print(selectedlocation)
+    }
+    
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EF029B6824C4F20800C3C4ED /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF029B6724C4F20800C3C4ED /* MapViewController.swift */; };
+		EF1C337E24C64B43000D1DAD /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C337D24C64B43000D1DAD /* SearchTableViewCell.swift */; };
+		EF1C338024C65535000D1DAD /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1C337F24C65535000D1DAD /* Placemark.swift */; };
 		EF241C5B24C37CAA00F0CDB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C5A24C37CAA00F0CDB0 /* AppDelegate.swift */; };
 		EF241C5D24C37CAA00F0CDB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C5C24C37CAA00F0CDB0 /* SceneDelegate.swift */; };
 		EF241C5F24C37CAA00F0CDB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C5E24C37CAA00F0CDB0 /* ViewController.swift */; };
@@ -20,6 +22,12 @@
 		EF241C9524C3803E00F0CDB0 /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C9424C3803E00F0CDB0 /* CircularProgress.swift */; };
 		EF241C9724C380CE00F0CDB0 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C9624C380CE00F0CDB0 /* AddListViewController.swift */; };
 		EF241C9924C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C9824C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift */; };
+		EF7E861124C68D4000C9C7A7 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861024C68D4000C9C7A7 /* MapPin.swift */; };
+		EF7E861324C6982600C9C7A7 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861224C6982600C9C7A7 /* BottomSheetViewController.swift */; };
+		EF7E861624C795B000C9C7A7 /* CalculateDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861524C795B000C9C7A7 /* CalculateDistance.swift */; };
+		EF7E861924C79A0E00C9C7A7 /* SelectedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861824C79A0E00C9C7A7 /* SelectedLocation.swift */; };
+		EF7E861B24C7A78000C9C7A7 /* BottomSheetFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861A24C7A78000C9C7A7 /* BottomSheetFavoriteViewController.swift */; };
+		EF7E861D24C7B9C100C9C7A7 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861C24C7B9C100C9C7A7 /* FavoriteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		EF029B6724C4F20800C3C4ED /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		EF1C337D24C64B43000D1DAD /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		EF1C337F24C65535000D1DAD /* Placemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placemark.swift; sourceTree = "<group>"; };
 		EF241C5724C37CAA00F0CDB0 /* SList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF241C5A24C37CAA00F0CDB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF241C5C24C37CAA00F0CDB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +69,12 @@
 		EF241C9424C3803E00F0CDB0 /* CircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
 		EF241C9624C380CE00F0CDB0 /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		EF241C9824C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		EF7E861024C68D4000C9C7A7 /* MapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
+		EF7E861224C6982600C9C7A7 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		EF7E861524C795B000C9C7A7 /* CalculateDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDistance.swift; sourceTree = "<group>"; };
+		EF7E861824C79A0E00C9C7A7 /* SelectedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedLocation.swift; sourceTree = "<group>"; };
+		EF7E861A24C7A78000C9C7A7 /* BottomSheetFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetFavoriteViewController.swift; sourceTree = "<group>"; };
+		EF7E861C24C7B9C100C9C7A7 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +125,8 @@
 		EF241C5924C37CAA00F0CDB0 /* SList */ = {
 			isa = PBXGroup;
 			children = (
+				EF7E861724C799EA00C9C7A7 /* model */,
+				EF7E861424C7959300C9C7A7 /* Service */,
 				EF241C9124C37F0200F0CDB0 /* viewcontrollers */,
 				EF241C9024C37EF900F0CDB0 /* cells */,
 				EF241C8D24C37ED500F0CDB0 /* viewmodel */,
@@ -153,6 +171,8 @@
 			children = (
 				EF241C9224C37F6600F0CDB0 /* HomeTableViewCell.swift */,
 				EF241C9824C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift */,
+				EF1C337D24C64B43000D1DAD /* SearchTableViewCell.swift */,
+				EF7E861C24C7B9C100C9C7A7 /* FavoriteTableViewCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -163,8 +183,28 @@
 				EF241C9624C380CE00F0CDB0 /* AddListViewController.swift */,
 				EF241C5E24C37CAA00F0CDB0 /* ViewController.swift */,
 				EF029B6724C4F20800C3C4ED /* MapViewController.swift */,
+				EF7E861224C6982600C9C7A7 /* BottomSheetViewController.swift */,
+				EF7E861A24C7A78000C9C7A7 /* BottomSheetFavoriteViewController.swift */,
 			);
 			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		EF7E861424C7959300C9C7A7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EF7E861524C795B000C9C7A7 /* CalculateDistance.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EF7E861724C799EA00C9C7A7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				EF1C337F24C65535000D1DAD /* Placemark.swift */,
+				EF7E861024C68D4000C9C7A7 /* MapPin.swift */,
+				EF7E861824C79A0E00C9C7A7 /* SelectedLocation.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,15 +337,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF7E861124C68D4000C9C7A7 /* MapPin.swift in Sources */,
 				EF241C9924C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift in Sources */,
 				EF241C5F24C37CAA00F0CDB0 /* ViewController.swift in Sources */,
 				EF241C9524C3803E00F0CDB0 /* CircularProgress.swift in Sources */,
+				EF7E861924C79A0E00C9C7A7 /* SelectedLocation.swift in Sources */,
 				EF241C9724C380CE00F0CDB0 /* AddListViewController.swift in Sources */,
+				EF7E861D24C7B9C100C9C7A7 /* FavoriteTableViewCell.swift in Sources */,
 				EF029B6824C4F20800C3C4ED /* MapViewController.swift in Sources */,
 				EF241C9324C37F6600F0CDB0 /* HomeTableViewCell.swift in Sources */,
 				EF241C6524C37CAB00F0CDB0 /* SList.xcdatamodeld in Sources */,
 				EF241C5B24C37CAA00F0CDB0 /* AppDelegate.swift in Sources */,
+				EF7E861624C795B000C9C7A7 /* CalculateDistance.swift in Sources */,
+				EF1C338024C65535000D1DAD /* Placemark.swift in Sources */,
 				EF241C5D24C37CAA00F0CDB0 /* SceneDelegate.swift in Sources */,
+				EF1C337E24C64B43000D1DAD /* SearchTableViewCell.swift in Sources */,
+				EF7E861324C6982600C9C7A7 /* BottomSheetViewController.swift in Sources */,
+				EF7E861B24C7A78000C9C7A7 /* BottomSheetFavoriteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

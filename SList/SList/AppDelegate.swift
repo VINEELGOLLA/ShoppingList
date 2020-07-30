@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 24)!
     ]
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         

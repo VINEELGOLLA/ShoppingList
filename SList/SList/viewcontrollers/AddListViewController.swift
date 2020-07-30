@@ -8,7 +8,15 @@
 
 import UIKit
 
-class AddListViewController: UIViewController {
+class AddListViewController: UIViewController{
+    
+    var tableView = UITableView()
+    var listdata : [ListData]? = [ListData]()
+    var mainlist : MainList?
+    var selectedlocation : SelectedLocation?
+    var count: Int = 0
+    var editindex: Int?
+    let button = UIButton.init(type: .custom)
     
     lazy var ListName : UITextField = {
         let namefield = UITextField()
@@ -19,63 +27,31 @@ class AddListViewController: UIViewController {
         namefield.clearButtonMode = UITextField.ViewMode.whileEditing;
         namefield.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         namefield.borderStyle = .none
-        namefield.backgroundColor = UIColor.opaqueSeparator
-        namefield.layer.shadowColor = UIColor.darkGray.cgColor
-        namefield.layer.shadowOpacity = 0.2
-        namefield.layer.shadowOffset = .zero
-        namefield.layer.shadowRadius = 1
-        namefield.layer.cornerRadius = 10
-        namefield.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
+        namefield.backgroundColor = UIColor.white
+        namefield.placeholder = "Name"
+        var bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0, y: namefield.frame.height - 2, width: namefield.frame.width, height: 2)
+        bottomLine.backgroundColor = UIColor.init(red: 48/255, green: 173/255, blue: 99/255, alpha: 1).cgColor
+        namefield.layer.addSublayer(bottomLine)
+        namefield.tag = 3
+        
         return namefield
     }()
     
     lazy var Location : UITextField = {
         let namefield = UITextField()
         namefield.translatesAutoresizingMaskIntoConstraints = false
-        //namefield.placeholder = "Location (Optional)"
+        namefield.placeholder = "Location (Optional)"
         namefield.keyboardType = .default
         namefield.returnKeyType = .done
         namefield.font = UIFont.systemFont(ofSize: 18)
-        namefield.clearButtonMode = UITextField.ViewMode.whileEditing;
+        namefield.clearButtonMode = UITextField.ViewMode.never;
         namefield.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        namefield.backgroundColor = UIColor.opaqueSeparator
-        namefield.layer.sublayerTransform = CATransform3DMakeTranslation(8, 0, 0);
-
-
         namefield.borderStyle = .none
-        
-        
-              
-        namefield.layer.shadowColor = UIColor.darkGray.cgColor
-        namefield.layer.shadowOpacity = 0.2
-        namefield.layer.shadowOffset = .zero
-        namefield.layer.shadowRadius = 1
-        namefield.layer.cornerRadius = 10
+        namefield.tag = 2
         return namefield
     }()
-    
-    lazy var AddItemsLabel : UILabel =  {
-        let label = UILabel()
-        label.text = "Add Items"
-        label.textColor = UIColor.systemBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.boldSystemFont(ofSize:18)
-        return label
-    }()
-    
-    lazy var AddItemsIcon : UIButton = {
-        let button = UIButton()
-        let image = UIImage(systemName: "plus.circle")
 
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.white
-        button.tintColor = UIColor.systemBlue
-        button.setImage(image, for: .normal)
-        return button
-    }()
-    
     let topstack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -86,63 +62,112 @@ class AddListViewController: UIViewController {
         return stack
     }()
     
-    var tableView = UITableView()
     
-    let sec1 = ["Name","Location"]
-    let sec2: [String] = ["     Name","     Location","djksndsk"]
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ListName.addBottomBorderWithColor(color: UIColor.opaqueSeparator, width: 0.5)
+        Location.addBottomBorderWithColor(color: UIColor.opaqueSeparator, width: 0.5)
+        
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 34)!]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setToolbarHidden(false, animated: false)
+        view.backgroundColor = UIColor.white
+        
+        setup_toolbartransparent()
+        setup_toolbarbutton()
+    }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.setToolbarHidden(false, animated: false)
-        navigationController?.toolbar.backgroundColor = UIColor.white
-        
-        var items = [UIBarButtonItem]()
-        items.append(
-            UIBarButtonItem(title: "Add Items", style: .plain, target: self, action: nil)
-        )
-        
-        toolbarItems = items
-        
-        
-        view.backgroundColor = UIColor.white
-        
         setupview()
+        
+        setupkeyboardnotification()
 
         setuptableview()
         
         setupnavigaionitems()
         
         Location.delegate = self
+    }
+    
+    func setup_toolbartransparent(){
+        navigationController?.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+        navigationController?.toolbar.backgroundColor = .clear
+        navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
+    }
+    
+    func setup_toolbarbutton() {
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20.0, weight: .heavy, scale: .medium)
+        let symbol = UIImage(systemName: "plus.circle.fill", withConfiguration: symbolConfig)
+            
+        button.setImage(symbol, for: .normal)
+        button.setTitle(" New Item", for: .normal)
+        button.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 18)
+        button.tintColor = UIColor.black
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.addTarget(self, action: #selector(additem), for: .touchUpInside)
+            
+        let barButton = UIBarButtonItem(customView: button)
         
-        
-
+        var items = [UIBarButtonItem]()
+          
+        items.append(barButton)
+        items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+            
+        setToolbarItems(items, animated: true)
         
     }
     
-    func setupview() {
+    func setupkeyboardnotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification){
+
+         }
+    
+    @objc func keyboardWillChange(_ notification: NSNotification){
+
+           }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification){
+                
+            }
+    
+    @objc func additem() {
+        button.showAnimation()
+        count = count+1
+        tableView.reloadData()
+    }
+    
+    func setupview() {
+        view.backgroundColor = UIColor.white
+
         view.addSubview(topstack)
-        //view.addSubview(AddItemsLabel)
-        //view.addSubview(AddItemsIcon)
         
         topstack.addArrangedSubview(ListName)
         topstack.addArrangedSubview(Location)
         
-        topstack.topAnchor.constraint(equalTo: view.topAnchor, constant: 110).isActive = true
+        topstack.topAnchor.constraint(equalTo: view.topAnchor, constant: 140).isActive = true
         topstack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
         topstack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
         topstack.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-//        AddItemsLabel.topAnchor.constraint(equalTo: topstack.bottomAnchor, constant: 20).isActive = true
-//        AddItemsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-//        AddItemsLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-//
-//        AddItemsIcon.topAnchor.constraint(equalTo: topstack.bottomAnchor, constant: 20).isActive = true
-//        AddItemsIcon.leadingAnchor.constraint(equalTo: AddItemsLabel.trailingAnchor, constant: 0).isActive = true
-//        AddItemsIcon.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
+        ListName.delegate = self
     }
     
     func setuptableview() {
@@ -150,9 +175,11 @@ class AddListViewController: UIViewController {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
-        tableView.topAnchor.constraint(equalTo: topstack.bottomAnchor, constant: 5).isActive = true
+        tableView.topAnchor.constraint(equalTo: topstack.bottomAnchor, constant: 20).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        tableView.autoresizingMask = .flexibleHeight
         
         tableView.frame = self.view.frame
         tableView.backgroundColor = UIColor.white
@@ -161,10 +188,17 @@ class AddListViewController: UIViewController {
         tableView.separatorColor = UIColor.clear
         self.view.addSubview(tableView)
         
-        tableView.register(AddListViewCellTableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        tableView.register(AddList2TableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        tableView.register(AddListViewCellTableViewCell.self, forCellReuseIdentifier: "Cell2")
         
         tableView.separatorColor = UIColor.gray
         tableView.sectionIndexBackgroundColor = UIColor.white
+        
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        
+        tableView.tableFooterView = UIView()
         
     }
 
@@ -172,25 +206,53 @@ class AddListViewController: UIViewController {
     func setupnavigaionitems() {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
-        navigationItem.title = "Add New List"
-        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.title = "New List"
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: nil, action: nil)
+        
     }
     
     
 }
 
 extension AddListViewController : UITableViewDelegate, UITableViewDataSource {
+    
+   
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        tableView.isHidden = true
-        return 0
+        if section == 0{
+            //return mainlist?.itemdata?.count ?? 0
+            return listdata?.count ?? 0
+        }
+        
+        return count
     }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AddListViewCellTableViewCell
+        if indexPath.section == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath) as! AddListViewCellTableViewCell
+            cell.itemtext.text = listdata?[indexPath.row].listName
+            cell.itemtext.tag = indexPath.row
+            cell.index = indexPath
+            cell.delegate = self
+            
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AddList2TableViewCell
         cell.accessoryType = .detailButton
+        cell.edittext.text = ""
+        cell.delegate = self
+        cell.edittext.becomeFirstResponder()
         return cell
     }
     
@@ -203,29 +265,97 @@ extension AddListViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 46
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let edit = EditListViewController()
+        present(edit, animated: true, completion: nil)
     }
 }
 
 extension AddListViewController : UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.tag == 3{
+            return
+        }
+        if textField.clearButtonMode == .never && textField.tag == 2{
+            
+            textField.resignFirstResponder()
+            let map = MapViewController()
+            map.delegate = self
+          //navigationController?.pushViewController(map, animated: true)
+          //map.isModalInPresentation = true
+            self.present(map, animated: true)
+        
+        }
+        else
+        {
+            textField.clearButtonMode = .never
+            textField.resignFirstResponder()
+        }
+   }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        let map = MapViewController()
-        map.delegate = self
-       //navigationController?.pushViewController(map, animated: true)
-        //map.isModalInPresentation = true
-        
-        
-        self.present(map, animated: true)
-        //present(map, animated: true, completion: nil)
+        return true
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+   
 }
 
 extension AddListViewController : locationdataSourceDelegate {
-func locationtextfield(selectedlocation: SelectedLocation) {
-    Location.text = selectedlocation.locationName
     
-    print(selectedlocation)
+    func locationtextfield(selectedlocation: SelectedLocation) {
+        Location.text = selectedlocation.locationName
+        Location.clearButtonMode = .always
+    
+        print(selectedlocation)
     }
     
 }
+
+extension UIView {
+    func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width,
+                              width: self.frame.size.width, height: width)
+        self.layer.addSublayer(border)
+    }
+}
+
+extension AddListViewController: AddListaddNewItem{
+    func editextdone(listname: String) {
+        if listname.isEmpty {
+            count = 0
+            tableView.reloadData()
+        }
+        else{
+            let ld = ListData(listname: listname, quantityvalue: 1, order: 1, date: Date(), mark: false)
+            addtomainlist(ld: ld)
+        }
+    }
+
+    func addtomainlist(ld: ListData){
+        listdata?.append(ld)
+        tableView.reloadData()
+    }
+}
+
+
+extension AddListViewController: AddListMarkonpress{
+    func mark(index: Int) {
+        listdata?[index].mark = true
+    }
+    
+    func unmark(index: Int) {
+        listdata?[index].mark = false
+    }
+}
+

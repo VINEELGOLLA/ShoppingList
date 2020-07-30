@@ -8,68 +8,54 @@
 
 import UIKit
 
+protocol AddListMarkonpress{
+    
+    func mark(index: Int)
+    func unmark(index: Int)
+}
+
 class AddListViewCellTableViewCell: UITableViewCell {
     
     static var identifier: String = "Cell"
         
     var index : IndexPath?
     
+    var delegate : AddListMarkonpress?
+    
     lazy var ItemValue : UILabel = {
-        
         let ItemValue = UILabel()
         ItemValue.text = "1x"
         ItemValue.textColor = UIColor.black
         ItemValue.numberOfLines = 0
-        ItemValue.textAlignment = .left
-        ItemValue.font = UIFont.boldSystemFont(ofSize:12)
-        //ItemValue.translatesAutoresizingMaskIntoConstraints = false
+        ItemValue.textAlignment = .center
+        ItemValue.font = .systemFont(ofSize: 18)
+        ItemValue.translatesAutoresizingMaskIntoConstraints = false
         return ItemValue
         
     }()
         
     lazy var checkbox: UIButton = {
         let checkbox = UIButton()
-        //checkbox.translatesAutoresizingMaskIntoConstraints = false
-        let image = UIImage(systemName: "circle")
-        checkbox.setImage(image, for: .normal)
+        
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 21.0, weight: .ultraLight, scale: .medium)
+        let symbol = UIImage(systemName: "circle", withConfiguration: symbolConfig)
+        
+        checkbox.translatesAutoresizingMaskIntoConstraints = false
+        //let image = UIImage(systemName: "circle")
+        checkbox.setImage(symbol, for: .normal)
         return checkbox
     }()
         
         
-    lazy var itemtext : UILabel = {
-        let itemtext = UILabel()
-        //itemtext.translatesAutoresizingMaskIntoConstraints = false
-        itemtext.text = "ice cream"
-        itemtext.textColor = UIColor.black
-        itemtext.numberOfLines = 0
-        //itemtext.adjustsFontSizeToFitWidth = true
-        itemtext.textAlignment = .left
-        itemtext.font = UIFont.boldSystemFont(ofSize:12)
-        return itemtext
-    }()
-        
-    lazy var itemvalue : UILabel = {
-        let itemvalue = UILabel()
-        itemvalue.translatesAutoresizingMaskIntoConstraints = false
-        itemvalue.text = "1"
-        itemvalue.textColor = UIColor.black
-        itemvalue.numberOfLines = 0
-        //itemtext.adjustsFontSizeToFitWidth = true
-        itemvalue.textAlignment = .right
-        itemvalue.font = UIFont.boldSystemFont(ofSize:12)
-        return itemvalue
-    }()
-        
-    let topstack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.alignment = .center
-        stack.distribution = .fillProportionally
-            
-        stack.contentMode = .scaleToFill
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
+      lazy var itemtext : UITextField = {
+         let edittext = UITextField()
+         edittext.translatesAutoresizingMaskIntoConstraints = false
+         edittext.placeholder = ""
+         edittext.borderStyle = .none
+         edittext.font = .systemFont(ofSize: 18)
+         edittext.textAlignment = .left
+         return edittext
+     }()
         
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -78,42 +64,100 @@ class AddListViewCellTableViewCell: UITableViewCell {
     }
         
     func setupviews() {
-        addSubview(topstack)
+        addSubview(checkbox)
+        addSubview(ItemValue)
+        addSubview(itemtext)
             
-        topstack.addArrangedSubview(checkbox)
-        topstack.addArrangedSubview(ItemValue)
-        topstack.addArrangedSubview(itemtext)
+        checkbox.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        checkbox.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        checkbox.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        checkbox.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        checkbox.imageEdgeInsets = UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0)
+        //checkbox.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
             
+        ItemValue.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: 0).isActive = true
+        ItemValue.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        ItemValue.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        ItemValue.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        itemtext.leadingAnchor.constraint(equalTo: ItemValue.trailingAnchor, constant: 5).isActive = true
+        itemtext.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        itemtext.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        itemtext.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        itemtext.delegate = self
+        
+        checkbox.addTarget(self, action: #selector(checkboxpressed), for: .touchUpInside)
 
-            
-        // topstack.
-        topstack.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        topstack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        topstack.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        topstack.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-            
-        checkbox.leadingAnchor.constraint(equalTo: topstack.leadingAnchor, constant: 5).isActive = true
-        checkbox.widthAnchor.constraint(equalToConstant: 20).isActive = true
-            
-        ItemValue.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: 10).isActive = true
-        ItemValue.widthAnchor.constraint(equalToConstant: 20).isActive = true
-            
-        topstack.setCustomSpacing(10, after: checkbox)
-        topstack.setCustomSpacing(10, after: ItemValue)
-        //topstack.setCustomSpacing(5, after: itemtext)
-            
-            
     }
         
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-        
-        
-
-        
-        
         
 }
 
+extension AddListViewCellTableViewCell: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.accessoryType = .detailButton
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        self.accessoryType = .none
+
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.accessoryType = .none
+
+        textField.resignFirstResponder()
+        
+        return true
+    }
+}
+
+extension AddListViewCellTableViewCell{
+    @objc func checkboxpressed(){
+        //let mark = UIImage(systemName: "checkmark.circle.fill")
+        //let unmark = UIImage(systemName: "circle")
+        
+        
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 21.0, weight: .ultraLight, scale: .medium)
+        let mark = UIImage(systemName: "largecircle.fill.circle", withConfiguration: symbolConfig)
+        
+        if self.checkbox.currentImage == mark {
+            animate(ismarked: true)
+        }
+        else
+        {
+            animate(ismarked: false)
+        }
+    }
+    
+    func animate(ismarked: Bool) {
+        
+        //let mark = UIImage(systemName: "checkmark.circle.fill")
+        //let unmark = UIImage(systemName: "circle")
+        
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 21.0, weight: .ultraLight, scale: .medium)
+        let mark = UIImage(systemName: "largecircle.fill.circle", withConfiguration: symbolConfig)
+        let unmark = UIImage(systemName: "circle", withConfiguration: symbolConfig)
+
+        
+        let unmarkscale: CGFloat = 0.7
+        let markscale: CGFloat = 1.3
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            let newImage = ismarked ? unmark : mark
+            let newScale = ismarked ? unmarkscale : markscale
+            self.checkbox.transform = self.checkbox.transform.scaledBy(x: newScale, y: newScale)
+            self.checkbox.setImage(newImage, for: .normal)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.checkbox.transform = CGAffineTransform.identity
+        })
+      })
+    }
+}

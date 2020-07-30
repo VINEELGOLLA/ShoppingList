@@ -12,6 +12,10 @@ class ViewController: UIViewController {
     
     var tableView = UITableView()
     var safeArea: UILayoutGuide!
+    
+    override func viewDidAppear(_ animated: Bool) {
+         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 34)!]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +29,7 @@ class ViewController: UIViewController {
     
     func setupnavigaionitems() {
           
-          navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+          navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
           navigationItem.title = "ShoppingList"
           
           //navigationItem.largeTitleDisplayMode = .always

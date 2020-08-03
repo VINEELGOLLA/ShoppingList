@@ -12,7 +12,6 @@ protocol AddListMarkprotocol{
     
     func mark(index: Int)
     func unmark(index: Int)
-    
     func itemname(name: String, index: Int?)
 }
 

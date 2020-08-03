@@ -8,19 +8,23 @@
 
 import UIKit
 
-protocol AddListMarkonpress{
+protocol AddListMarkprotocol{
     
     func mark(index: Int)
     func unmark(index: Int)
+    
+    func itemname(name: String, index: Int?)
 }
 
 class AddListViewCellTableViewCell: UITableViewCell {
     
     static var identifier: String = "Cell"
         
-    var index : IndexPath?
+    var index : Int?
     
-    var delegate : AddListMarkonpress?
+    var delegate : AddListMarkprotocol?
+    
+    var listname : String?
     
     lazy var ItemValue : UILabel = {
         let ItemValue = UILabel()
@@ -65,7 +69,7 @@ class AddListViewCellTableViewCell: UITableViewCell {
         
     func setupviews() {
         addSubview(checkbox)
-        addSubview(ItemValue)
+        //addSubview(ItemValue)
         addSubview(itemtext)
             
         checkbox.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
@@ -75,12 +79,12 @@ class AddListViewCellTableViewCell: UITableViewCell {
         checkbox.imageEdgeInsets = UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0)
         //checkbox.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
             
-        ItemValue.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: 0).isActive = true
-        ItemValue.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        ItemValue.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        ItemValue.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+//        ItemValue.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: 0).isActive = true
+//        ItemValue.widthAnchor.constraint(equalToConstant: 30).isActive = true
+//        ItemValue.heightAnchor.constraint(equalToConstant: 30).isActive = true
+//        ItemValue.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        itemtext.leadingAnchor.constraint(equalTo: ItemValue.trailingAnchor, constant: 5).isActive = true
+        itemtext.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: 5).isActive = true
         itemtext.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         itemtext.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         itemtext.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -102,19 +106,22 @@ extension AddListViewCellTableViewCell: UITextFieldDelegate{
         self.accessoryType = .detailButton
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.accessoryType = .none
-
+        
         textField.resignFirstResponder()
+
+        listname = textField.text
+
+
+        delegate?.itemname(name: listname ?? "", index: index!)
+
+        
         return true
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.accessoryType = .none
-
-        textField.resignFirstResponder()
-        
-        return true
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        listname = textField.text
     }
 }
 
@@ -129,14 +136,17 @@ extension AddListViewCellTableViewCell{
         
         if self.checkbox.currentImage == mark {
             animate(ismarked: true)
+            delegate?.unmark(index: index!)
         }
         else
         {
             animate(ismarked: false)
+            delegate?.mark(index: index!)
         }
     }
     
     func animate(ismarked: Bool) {
+        print("asdfg")
         
         //let mark = UIImage(systemName: "checkmark.circle.fill")
         //let unmark = UIImage(systemName: "circle")

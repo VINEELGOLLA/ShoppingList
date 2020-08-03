@@ -8,13 +8,39 @@
 
 import UIKit
 
+protocol editlist {
+    func editedlist(listdata: ListData, index: Int?)
+    func reload()
+}
+
+enum typelist {
+    case numeric
+    case Piece
+    case Gallon
+    case Dozen
+    
+}
+
 class EditListViewController: UIViewController {
+
+    
+    var doneBtn:UIBarButtonItem = UIBarButtonItem()
+
+    
+    
+    var listdata : ListData?
+    var index: Int?
 
     let editView = EditListView()
     
     var selectedQuantityType: String?
     
-    var QuantityTypeList : [String]  = ["numeric","Piece","Gallon","Dozen","Each","Bag","Bottle","Box","Case","Pack","Roll","Jar","Can","Bunch","Gram","Kg","litre","ml","lbs","qt","oz","cup","tbsp","tsp","pt"]
+    var delegate : editlist?
+
+    
+    
+    var QuantityTypeList : [String]  = ["numeric","Piece","Gallon","Dozen"]
+    //"Each","Bag","Bottle","Box","Case","Pack","Roll","Jar","Can","Bunch","Gram","Kg","litre","ml","lbs","qt","oz","cup","tbsp","tsp","pt"]
     
     var QuantityTypeIndexPath: IndexPath?
 
@@ -32,9 +58,21 @@ class EditListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        checksavebtn()
+        
+    
 
     }
+    
+    func checksavebtn() {
+        if (listdata?.listName.isEmpty)! {
+            doneBtn.isEnabled = false
+        }
+    }
+    
+    
+    
+
     
 
 
@@ -73,12 +111,20 @@ extension EditListViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! listNameTableViewCell
             cell.contentView.backgroundColor = UIColor.white
             cell.itemname.delegate = self
+            cell.itemname.text = listdata?.listName
+            cell.itemname.tag = 10
             return cell
                
         }
         else if (indexPath.section == 1)
         {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! Favorite2TableViewCell
+            if(listdata?.star == true){
+                cell.toggle.isOn = true
+            }
+            
+            cell.toggle.addTarget(self, action: #selector(favorite), for: UIControl.Event.valueChanged)
             return cell
         }
         else if (indexPath.section == 2)
@@ -86,26 +132,65 @@ extension EditListViewController: UITableViewDelegate, UITableViewDataSource{
             if QuantityTypeIndexPath != nil && QuantityTypeIndexPath!.row == indexPath.row
             {
             let cell = tableView.dequeueReusableCell(withIdentifier: "picker", for: indexPath) as! pickerTableViewCell
+                cell.picker.delegate = self
+                cell.picker.dataSource = self
+                
+                cell.picker.selectRow(listdata?.Quantitytype ?? 0, inComponent: 0, animated: true)
+
             return cell
             }
             else
             {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath) as! QuatityTypeTableViewCell
+                switch listdata?.Quantitytype {
+                case 0:
+                    cell.QuantityTypevalue.text = "numeric"
+                case 1:
+                    cell.QuantityTypevalue.text = "Piece"
+                case 2:
+                    cell.QuantityTypevalue.text = "Gallon"
+                case 3:
+                    cell.QuantityTypevalue.text = "Dozen"
+                
+                case .none:
+                    cell.QuantityTypevalue.text = "numeric"
+                case .some(_):
+                    cell.QuantityTypevalue.text = "numeric"
+
+                }
                 return cell
             }
         }
         else if (indexPath.section == 3)
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell3", for: indexPath) as! QuantityValueTableViewCell
+            cell.QuantityTypevalue.text = String(listdata!.quantityvalue)
+            cell.decreaseButton.isEnabled = true
+            cell.IncreaseButton.isEnabled = true
+
+            
+            if listdata?.quantityvalue == 1{
+                cell.decreaseButton.isEnabled = false
+            }
+            
+            if listdata?.quantityvalue == 100{
+                cell.IncreaseButton.isEnabled = false
+            }
+            cell.IncreaseButton.addTarget(self, action: #selector(increase), for: .touchUpInside)
+            cell.decreaseButton.addTarget(self, action: #selector(decrease), for: .touchUpInside)
+
             return cell
         }
         else if (indexPath.section == 4)
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell4", for: indexPath) as! PriorityTableViewCell
+            cell.segmented.selectedSegmentIndex = listdata!.Priority
+            cell.segmented.addTarget(self, action:  #selector(EditListViewController.indexChanged(_:)), for: .valueChanged)
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell5", for: indexPath) as! notesTableViewCell
         cell.notes.delegate = self
+        cell.notes.text = listdata?.notes
         return cell
            
        }
@@ -172,6 +257,41 @@ extension EditListViewController: UITableViewDelegate, UITableViewDataSource{
     @objc func tapDone(sender: Any) {
            self.view.endEditing(true)
        }
+    
+    @objc func favorite(myswitch: UISwitch) {
+        print("iop")
+        switch myswitch.isOn {
+        case true:
+            self.listdata?.star = true
+        case false:
+            self.listdata?.star = false
+        }
+        
+    }
+    
+    @objc func increase() {
+        listdata?.quantityvalue += 1
+        editView.tableView.reloadData()
+    }
+         
+    @objc func decrease() {
+        listdata?.quantityvalue -= 1
+        editView.tableView.reloadData()
+
+    }
+    
+   @objc func indexChanged(_ sender: UISegmentedControl) {
+    if sender.selectedSegmentIndex == 0 {
+        listdata?.Priority = 0
+        } else if sender.selectedSegmentIndex == 1 {
+            listdata?.Priority = 1
+        } else if sender.selectedSegmentIndex == 2 {
+            listdata?.Priority = 2
+        }else if sender.selectedSegmentIndex == 3 {
+            listdata?.Priority = 3
+        }
+    }
+
 }
 
 
@@ -185,9 +305,11 @@ extension EditListViewController {
         self.view.addSubview(navigationBar)
                  
         let navigationItem = UINavigationItem()
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(save))
+        //doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(save))
+        doneBtn = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(save1))
+
         let cancelBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(Cancel))
-        //navigationItem.title = ""
+        //navigationItem.title = "Details"
         
         navigationItem.leftBarButtonItem = cancelBtn
         navigationItem.rightBarButtonItem = doneBtn
@@ -195,21 +317,24 @@ extension EditListViewController {
 //      navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
 //      navigationBar.shadowImage = UIImage()
         
-        //navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 12)!]
+        //navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 0)!]
 
     }
     
-    @objc func save() {
-            print("save")
-            dismiss(animated: true, completion: nil)
-        }
-        
+  
+
     @objc func Cancel() {
             print("cancel")
-
+        delegate?.reload()
             dismiss(animated: true, completion: nil)
 
         }
+    
+    @objc func save1() {
+              print("save")
+          delegate?.editedlist(listdata: listdata!, index : index)
+              dismiss(animated: true, completion: nil)
+          }
     
 
 }
@@ -217,28 +342,83 @@ extension EditListViewController {
 extension EditListViewController: UITextFieldDelegate{
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        listdata?.listName = textField.text!
         return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if(textField.text!.isEmpty){
+            doneBtn.isEnabled = false
+        }
+        else{
+            doneBtn.isEnabled = true
+        }
+        
     }
 }
 
 extension EditListViewController: UITextViewDelegate {
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         textView.resignFirstResponder()
+            
         return true
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             textView.resignFirstResponder()
+            listdata?.notes = textView.text
+
             return false
         }
         return true
     }
+    
+}
+
+extension EditListViewController: UIPickerViewDelegate,UIPickerViewDataSource{
+    
+   func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        QuantityTypeList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+       let row = QuantityTypeList[row]
+       return row
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selected = QuantityTypeList[row]
+        print("called")
+        print(selected)
+        switch selected {
+         case "numeric":
+             listdata?.Quantitytype = 0
+         case "Piece":
+             listdata?.Quantitytype = 1
+         case "Gallon":
+             listdata?.Quantitytype = 2
+         case "Dozen":
+             listdata?.Quantitytype = 3
+        default:
+            listdata?.Quantitytype = 0
+        }
+        editView.tableView.reloadData()
+        //editView.tableView.reloadSections([3], with: .none)
+    }
+    
     
 }
 

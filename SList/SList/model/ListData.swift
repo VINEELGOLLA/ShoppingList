@@ -10,17 +10,22 @@ import Foundation
 import MapKit
 
 struct ListData {
-    let listName: String
-    let quantityvalue: Int?
+    let uuid = UUID()
+    var listName: String
+    var quantityvalue: Int = 1
     let order: Int
-    let Date: Date
-    var mark: Bool
+    let itemDate = Date()
+    var mark: Bool = false
     
-    init( listname: String, quantityvalue: Int, order: Int, date: Date, mark: Bool) {
+    var star : Bool = false
+    var Quantitytype: Int = 0
+    var Priority: Int = 0
+    var notes : String?
+    
+    init( listname: String, order: Int, mark: Bool) {
         self.listName = listname
-        self.quantityvalue = quantityvalue
         self.order = order
-        self.Date = date
         self.mark = mark
     }
 }
+ 

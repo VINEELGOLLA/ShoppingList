@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
     
     var tableView = UITableView()
     var safeArea: UILayoutGuide!
+    
+    var flist = [MainList]()
+    var ld = [ListData]()
     
     override func viewDidAppear(_ animated: Bool) {
          navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 34)!]
@@ -25,6 +29,10 @@ class ViewController: UIViewController {
         setuptableview()
         
         setupnavigaionitems()
+        
+        ld.append(ListData(listname: "apples", order: 1, mark: false))
+        
+        flist.append(MainList(listName: "Trader Joe",locationdata: SelectedLocation(locationName: "Trader Joe", locationCoordinate: CLLocationCoordinate2D(latitude: 12.33, longitude: 12.11), thoroughfare: "lol", aliasName: "lol"), itemdata: ld))
     }
     
     func setupnavigaionitems() {
@@ -68,6 +76,7 @@ class ViewController: UIViewController {
     @objc func addTapped() {
         
         let addlist = AddListViewController()
+        addlist.delegate = self
         navigationController?.pushViewController(addlist, animated: true)
 
     }
@@ -75,11 +84,12 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return flist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! HomeTableViewCell
+        cell.listname.text = flist[indexPath.row].listName
         return cell
     }
     
@@ -90,10 +100,24 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
+        let lol = ListDetailViewController()
+        
+        navigationController?.pushViewController(lol, animated: true)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    
+}
+
+extension ViewController: AddlistProtocol{
+    func finallist(list: MainList) {
+        
+        flist.append(list)
+        tableView.reloadData()
     }
     
     

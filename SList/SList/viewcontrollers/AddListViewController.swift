@@ -58,6 +58,7 @@ class AddListViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setupnavigaionitems()
         
         topView.Location.delegate = self

@@ -35,6 +35,10 @@
 		EF65185A24CA974C00413E93 /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65185924CA974C00413E93 /* ListData.swift */; };
 		EF65185C24CA9AED00413E93 /* MainList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65185B24CA9AED00413E93 /* MainList.swift */; };
 		EF65185E24CB85C000413E93 /* EditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65185D24CB85C000413E93 /* EditListViewController.swift */; };
+		EF77780A24D5371900691DB4 /* AddlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77780924D5371900691DB4 /* AddlistView.swift */; };
+		EF77780C24D63A5000691DB4 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77780B24D63A5000691DB4 /* ListDetailViewController.swift */; };
+		EF77780E24D63AC300691DB4 /* ListDetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77780D24D63AC300691DB4 /* ListDetailTopView.swift */; };
+		EF77781024D66CD700691DB4 /* ListDetailBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77780F24D66CD700691DB4 /* ListDetailBottomView.swift */; };
 		EF7E861124C68D4000C9C7A7 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861024C68D4000C9C7A7 /* MapPin.swift */; };
 		EF7E861324C6982600C9C7A7 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861224C6982600C9C7A7 /* BottomSheetViewController.swift */; };
 		EF7E861624C795B000C9C7A7 /* CalculateDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861524C795B000C9C7A7 /* CalculateDistance.swift */; };
@@ -95,6 +99,10 @@
 		EF65185924CA974C00413E93 /* ListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
 		EF65185B24CA9AED00413E93 /* MainList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainList.swift; sourceTree = "<group>"; };
 		EF65185D24CB85C000413E93 /* EditListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListViewController.swift; sourceTree = "<group>"; };
+		EF77780924D5371900691DB4 /* AddlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddlistView.swift; sourceTree = "<group>"; };
+		EF77780B24D63A5000691DB4 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		EF77780D24D63AC300691DB4 /* ListDetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailTopView.swift; sourceTree = "<group>"; };
+		EF77780F24D66CD700691DB4 /* ListDetailBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailBottomView.swift; sourceTree = "<group>"; };
 		EF7E861024C68D4000C9C7A7 /* MapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		EF7E861224C6982600C9C7A7 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		EF7E861524C795B000C9C7A7 /* CalculateDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDistance.swift; sourceTree = "<group>"; };
@@ -216,6 +224,7 @@
 				EF7E861224C6982600C9C7A7 /* BottomSheetViewController.swift */,
 				EF7E861A24C7A78000C9C7A7 /* BottomSheetFavoriteViewController.swift */,
 				EF65185D24CB85C000413E93 /* EditListViewController.swift */,
+				EF77780B24D63A5000691DB4 /* ListDetailViewController.swift */,
 			);
 			path = viewcontrollers;
 			sourceTree = "<group>";
@@ -232,6 +241,9 @@
 			isa = PBXGroup;
 			children = (
 				EF401DBE24D0DF7900D3BFFD /* EditListView.swift */,
+				EF77780924D5371900691DB4 /* AddlistView.swift */,
+				EF77780D24D63AC300691DB4 /* ListDetailTopView.swift */,
+				EF77780F24D66CD700691DB4 /* ListDetailBottomView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -407,6 +419,7 @@
 				EF401DC724D27D9100D3BFFD /* QuantityValueTableViewCell.swift in Sources */,
 				EF7E861924C79A0E00C9C7A7 /* SelectedLocation.swift in Sources */,
 				EF241C9724C380CE00F0CDB0 /* AddListViewController.swift in Sources */,
+				EF77780C24D63A5000691DB4 /* ListDetailViewController.swift in Sources */,
 				EF401DBC24CFD8D600D3BFFD /* UIButtonExtention.swift in Sources */,
 				EF65185C24CA9AED00413E93 /* MainList.swift in Sources */,
 				EF7E861D24C7B9C100C9C7A7 /* FavoriteTableViewCell.swift in Sources */,
@@ -416,8 +429,10 @@
 				EF241C6524C37CAB00F0CDB0 /* SList.xcdatamodeld in Sources */,
 				EF401DC924D27DAD00D3BFFD /* Favorite2TableViewCell.swift in Sources */,
 				EF241C5B24C37CAA00F0CDB0 /* AppDelegate.swift in Sources */,
+				EF77780A24D5371900691DB4 /* AddlistView.swift in Sources */,
 				EF7E861624C795B000C9C7A7 /* CalculateDistance.swift in Sources */,
 				EF1C338024C65535000D1DAD /* Placemark.swift in Sources */,
+				EF77781024D66CD700691DB4 /* ListDetailBottomView.swift in Sources */,
 				EF241C5D24C37CAA00F0CDB0 /* SceneDelegate.swift in Sources */,
 				EF401DBF24D0DF7900D3BFFD /* EditListView.swift in Sources */,
 				EF401DCB24D27DC400D3BFFD /* PriorityTableViewCell.swift in Sources */,
@@ -425,6 +440,7 @@
 				EF1C337E24C64B43000D1DAD /* SearchTableViewCell.swift in Sources */,
 				EF401DC524D27D7B00D3BFFD /* QuatityTypeTableViewCell.swift in Sources */,
 				EF7E861324C6982600C9C7A7 /* BottomSheetViewController.swift in Sources */,
+				EF77780E24D63AC300691DB4 /* ListDetailTopView.swift in Sources */,
 				EF7E861B24C7A78000C9C7A7 /* BottomSheetFavoriteViewController.swift in Sources */,
 				EF65185E24CB85C000413E93 /* EditListViewController.swift in Sources */,
 				EF401DCF24D27DDB00D3BFFD /* pickerTableViewCell.swift in Sources */,

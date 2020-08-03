@@ -8,18 +8,27 @@
 
 import UIKit
 
-protocol AddListaddNewItem {
-    func editextdone(listname: String)
+protocol AddList2protocol {
+    
+    func mark()
+    func unmark()
+    
+    func listname(name: String)
+    
+    func finallistname(name: String)
+
 }
 
 class AddList2TableViewCell: UITableViewCell {
 
     static var identifier: String = "Cell"
     
-            
-    var index : IndexPath?
+    var listname: String?
     
-    var delegate : AddListaddNewItem?
+            
+    //var index : IndexPath?
+    
+    var delegate : AddList2protocol?
             
     lazy var checkbox: UIButton = {
         let checkbox = UIButton()
@@ -75,6 +84,9 @@ class AddList2TableViewCell: UITableViewCell {
         edittext.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         edittext.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
+        
+        checkbox.addTarget(self, action: #selector(checkboxpressed), for: .touchUpInside)
+
         //edittext.text = ""
         
         edittext.returnKeyType = .done
@@ -90,19 +102,72 @@ class AddList2TableViewCell: UITableViewCell {
 }
 
 extension AddList2TableViewCell: UITextFieldDelegate{
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        delegate?.listname(name: textField.text ?? "")
+    }
+    
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        delegate?.finallistname(name: textField.text ?? "")
+//        return true
+//    }
 
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
-        print("kishore")
         textField.resignFirstResponder()
-
-        delegate?.editextdone(listname: textField.text ?? "")
+        delegate?.finallistname(name: textField.text ?? "")
         self.edittext.text = ""
         return true
     }
 
 }
+
+extension AddList2TableViewCell{
+    @objc func checkboxpressed(){
+        //let mark = UIImage(systemName: "checkmark.circle.fill")
+        //let unmark = UIImage(systemName: "circle")
+        
+        
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 21.0, weight: .ultraLight, scale: .medium)
+        let mark = UIImage(systemName: "largecircle.fill.circle", withConfiguration: symbolConfig)
+        
+        if self.checkbox.currentImage == mark {
+            animate(ismarked: true)
+            delegate?.unmark()
+        }
+        else
+        {
+            animate(ismarked: false)
+            delegate?.mark()
+        }
+    }
+    
+    func animate(ismarked: Bool) {
+        
+        //let mark = UIImage(systemName: "checkmark.circle.fill")
+        //let unmark = UIImage(systemName: "circle")
+        
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 21.0, weight: .ultraLight, scale: .medium)
+        let mark = UIImage(systemName: "largecircle.fill.circle", withConfiguration: symbolConfig)
+        let unmark = UIImage(systemName: "circle", withConfiguration: symbolConfig)
+
+        
+        let unmarkscale: CGFloat = 0.7
+        let markscale: CGFloat = 1.3
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            let newImage = ismarked ? unmark : mark
+            let newScale = ismarked ? unmarkscale : markscale
+            self.checkbox.transform = self.checkbox.transform.scaledBy(x: newScale, y: newScale)
+            self.checkbox.setImage(newImage, for: .normal)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.checkbox.transform = CGAffineTransform.identity
+        })
+      })
+    }
+}
+
 
 
 

@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         setupnavigaionitems()
         
         ld.append(ListData(listname: "apples", order: 1, mark: false))
+        //ld.append(ListData(listname: "oranges", order: 2, mark: true))
         
         flist.append(MainList(listName: "Trader Joe",locationdata: SelectedLocation(locationName: "Trader Joe", locationCoordinate: CLLocationCoordinate2D(latitude: 12.33, longitude: 12.11), thoroughfare: "lol", aliasName: "lol"), itemdata: ld))
     }
@@ -101,6 +102,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: false)
         
         let lol = ListDetailViewController()
+        lol.mainlist = flist[0]
         
         navigationController?.pushViewController(lol, animated: true)
         

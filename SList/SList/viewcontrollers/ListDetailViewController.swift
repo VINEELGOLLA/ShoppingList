@@ -14,6 +14,13 @@ class ListDetailViewController: UIViewController {
     
     let bottomView = ListDetailBottomView()
     let button = UIButton.init(type: .custom)
+    
+    var mainlist : MainList?
+    var count: Int = 0
+    var nlist : ListData?
+
+
+
 
     
     lazy var img : UIImageView = {
@@ -27,7 +34,6 @@ class ListDetailViewController: UIViewController {
         im.image = lol
         return im
     }()
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +56,9 @@ class ListDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(mainlist?.itemdata)
+
         //
         self.navigationController?.navigationBar.shadowImage = UIImage()
         //self.navigationController?.toolbar.shadowImage(forToolbarPosition: .)
@@ -137,14 +146,18 @@ extension ListDetailViewController{
 
 extension ListDetailViewController{
     @objc func additem(){
+        button.showAnimation()
         
+        nlist = ListData(listname: "", order: 1,mark: false)
+        count = count+1
+        bottomView.tableView.reloadData()
     }
 }
 
 extension ListDetailViewController : UITableViewDelegate, UITableViewDataSource {
     
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
         let lol = UIView()
         lol.translatesAutoresizingMaskIntoConstraints = false
         lol.addSubview(topView)
@@ -152,14 +165,198 @@ extension ListDetailViewController : UITableViewDelegate, UITableViewDataSource 
         lol.heightAnchor.constraint(equalToConstant: 80).isActive = true
 
         return lol
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        }
+        if section == 1{
+            let lol = UIView()
+            lol.translatesAutoresizingMaskIntoConstraints = false
+            lol.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            lol.backgroundColor = UIColor.white
+            return lol
+        }
+        return UIView()
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 80
+        }
+        else
+        {
+            return 0
+        }
+    }
+   
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if section == 0{
+            //return mainlist?.itemdata?.count ?? 0
+            print("flop")
+            return mainlist?.itemdata?.count ?? 0
+        }
+        
+        return count
+    }
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath) as! AddListViewCellTableViewCell
+        
+        if indexPath.section == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell1", for: indexPath) as! AddListViewCellTableViewCell
+            cell.itemtext.text = mainlist?.itemdata?[indexPath.row].listName
+            cell.itemtext.tag = indexPath.row
+            cell.index = indexPath.row
+            cell.delegate = self
+            
+            if mainlist?.itemdata?[indexPath.row].mark == true{
+                cell.animate(ismarked: false)
+            }
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath) as! AddList2TableViewCell
+        cell.accessoryType = .detailButton
+        cell.delegate = self
+        cell.edittext.becomeFirstResponder()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 46
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let edit = EditListViewController()
+        
+
+        if (indexPath.section == 1){
+            edit.listdata = nlist
+            edit.delegate = self
+            present(edit, animated: true, completion: nil)
+            return
+        }
+        edit.listdata = mainlist?.itemdata?[indexPath.row]
+        edit.index = indexPath.row
+        edit.delegate = self
+        present(edit, animated: true, completion: nil)
+    }
+    
+    
+}
+
+extension ListDetailViewController: AddList2protocol{
+    func mark() {
+        nlist?.mark = true
+    }
+    
+    func unmark() {
+        nlist?.mark = false
+
+    }
+    
+    
+    
+    
+    func finallistname(name: String) {
+        print("came")
+        if name.isEmpty {
+            print("lol")
+
+            count = 0
+            nlist = nil
+            print(nlist)
+            bottomView.tableView.reloadData()
+            //tableView.reloadData()
+        }
+        else{
+            addtomainlist(ld:  nlist!)
+        }
+    }
+    
+    func listname(name: String) {
+        nlist?.listName = name
+    }
+    
+    func addtomainlist(ld: ListData){
+        mainlist?.itemdata?.append(ld)
+           //listdata?.append(ld)
+        bottomView.tableView.reloadData()
+           //tableView.reloadData()
+
+       }
+    
+    
+}
+
+
+extension ListDetailViewController: AddListMarkprotocol{
+    func itemname(name: String, index: Int?) {
+        if name.isEmpty == true {
+            guard let ind = index else { return }
+            mainlist?.itemdata?.remove(at: ind)
+            bottomView.tableView.deleteRows(at: [IndexPath(item: ind, section: 0)], with: .automatic)
+            //listdata?.remove(at: ind)
+            //tableView.deleteRows(at: [IndexPath(item: ind, section: 0)], with: .automatic)
+        }
+        else{
+            guard let ind = index else { return }
+            
+            mainlist?.itemdata?[ind].listName = name
+            bottomView.tableView.reloadData()
+            //listdata?[ind].listName = name
+            //tableView.reloadData()
+        }
+    }
+    
+    func mark(index: Int) {
+        mainlist?.itemdata?[index].mark = true
+        //listdata?[index].mark = true
+    }
+    
+    func unmark(index: Int) {
+        mainlist?.itemdata?[index].mark = false
+
+        //listdata?[index].mark = false
+    }
+}
+
+extension ListDetailViewController: editlist{
+    func reload() {
+        bottomView.tableView.reloadData()
+        //tableView.reloadData()
+    }
+    
+    
+    func editedlist(listdata: ListData, index: Int?) {
+        
+        guard let ind = index else {
+            mainlist?.itemdata?.append(listdata)
+            bottomView.tableView.reloadData()
+            return
+            //self.listdata?.append(listdata)
+            //tableView.reloadData()
+            //return
+        }
+        print(listdata)
+        mainlist?.itemdata?[ind] = listdata
+        bottomView.tableView.reloadData()
+        //self.listdata?[ind] = listdata
+        // tableView.reloadData()
     }
     
     

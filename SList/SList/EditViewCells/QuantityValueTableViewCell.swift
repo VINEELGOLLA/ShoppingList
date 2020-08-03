@@ -39,7 +39,7 @@ class QuantityValueTableViewCell: UITableViewCell {
          return listname
      }()
     
-    private let decreaseButton : UIButton = {
+    let decreaseButton : UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 21.0, weight: .light, scale: .medium)
@@ -49,7 +49,7 @@ class QuantityValueTableViewCell: UITableViewCell {
     }()
     
     
-    private let IncreaseButton : UIButton = {
+    let IncreaseButton : UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 21.0, weight: .light, scale: .medium)
@@ -82,7 +82,12 @@ class QuantityValueTableViewCell: UITableViewCell {
         stackView.distribution = .equalSpacing
         stackView.axis = .horizontal
         stackView.spacing = 5
-        addSubview(stackView)
+        self.addSubview(stackView)
+        
+        decreaseButton.addTarget(self, action: #selector(decrease), for: .touchUpInside)
+        IncreaseButton.addTarget(self, action: #selector(increase), for: .touchUpInside)
+
+        
         
         QuantityType.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         QuantityType.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
@@ -95,4 +100,14 @@ class QuantityValueTableViewCell: UITableViewCell {
 
     }
 
+}
+
+extension QuantityValueTableViewCell {
+    @objc func increase(){
+        
+    }
+    
+    @objc func decrease(){
+           
+    }
 }

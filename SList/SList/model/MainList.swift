@@ -10,9 +10,9 @@ import Foundation
 import MapKit
 
 struct MainList {
-    let listName: String
-    let locationdata: SelectedLocation?
-    let itemdata: [ListData]?
+    var listName: String
+    var locationdata: SelectedLocation?
+    var itemdata: [ListData]?
     
     
 //    init(listname: String, locationdata: [SelectedLocation], itemdata: [ListData]){

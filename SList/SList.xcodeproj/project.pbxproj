@@ -39,6 +39,8 @@
 		EF77780C24D63A5000691DB4 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77780B24D63A5000691DB4 /* ListDetailViewController.swift */; };
 		EF77780E24D63AC300691DB4 /* ListDetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77780D24D63AC300691DB4 /* ListDetailTopView.swift */; };
 		EF77781024D66CD700691DB4 /* ListDetailBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77780F24D66CD700691DB4 /* ListDetailBottomView.swift */; };
+		EF77781224D8D47000691DB4 /* mainbottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77781124D8D47000691DB4 /* mainbottomView.swift */; };
+		EF77781424D8E48B00691DB4 /* locationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77781324D8E48B00691DB4 /* locationCollectionViewCell.swift */; };
 		EF7E861124C68D4000C9C7A7 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861024C68D4000C9C7A7 /* MapPin.swift */; };
 		EF7E861324C6982600C9C7A7 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861224C6982600C9C7A7 /* BottomSheetViewController.swift */; };
 		EF7E861624C795B000C9C7A7 /* CalculateDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7E861524C795B000C9C7A7 /* CalculateDistance.swift */; };
@@ -103,6 +105,8 @@
 		EF77780B24D63A5000691DB4 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		EF77780D24D63AC300691DB4 /* ListDetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailTopView.swift; sourceTree = "<group>"; };
 		EF77780F24D66CD700691DB4 /* ListDetailBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailBottomView.swift; sourceTree = "<group>"; };
+		EF77781124D8D47000691DB4 /* mainbottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainbottomView.swift; sourceTree = "<group>"; };
+		EF77781324D8E48B00691DB4 /* locationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationCollectionViewCell.swift; sourceTree = "<group>"; };
 		EF7E861024C68D4000C9C7A7 /* MapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		EF7E861224C6982600C9C7A7 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		EF7E861524C795B000C9C7A7 /* CalculateDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDistance.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 				EF1C337D24C64B43000D1DAD /* SearchTableViewCell.swift */,
 				EF7E861C24C7B9C100C9C7A7 /* FavoriteTableViewCell.swift */,
 				EF65185724CA1D0800413E93 /* AddList2TableViewCell.swift */,
+				EF77781324D8E48B00691DB4 /* locationCollectionViewCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 				EF77780924D5371900691DB4 /* AddlistView.swift */,
 				EF77780D24D63AC300691DB4 /* ListDetailTopView.swift */,
 				EF77780F24D66CD700691DB4 /* ListDetailBottomView.swift */,
+				EF77781124D8D47000691DB4 /* mainbottomView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -414,12 +420,14 @@
 			files = (
 				EF7E861124C68D4000C9C7A7 /* MapPin.swift in Sources */,
 				EF241C9924C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift in Sources */,
+				EF77781424D8E48B00691DB4 /* locationCollectionViewCell.swift in Sources */,
 				EF241C5F24C37CAA00F0CDB0 /* ViewController.swift in Sources */,
 				EF241C9524C3803E00F0CDB0 /* CircularProgress.swift in Sources */,
 				EF401DC724D27D9100D3BFFD /* QuantityValueTableViewCell.swift in Sources */,
 				EF7E861924C79A0E00C9C7A7 /* SelectedLocation.swift in Sources */,
 				EF241C9724C380CE00F0CDB0 /* AddListViewController.swift in Sources */,
 				EF77780C24D63A5000691DB4 /* ListDetailViewController.swift in Sources */,
+				EF77781224D8D47000691DB4 /* mainbottomView.swift in Sources */,
 				EF401DBC24CFD8D600D3BFFD /* UIButtonExtention.swift in Sources */,
 				EF65185C24CA9AED00413E93 /* MainList.swift in Sources */,
 				EF7E861D24C7B9C100C9C7A7 /* FavoriteTableViewCell.swift in Sources */,

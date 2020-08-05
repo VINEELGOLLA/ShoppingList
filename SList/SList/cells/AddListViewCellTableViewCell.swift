@@ -12,7 +12,6 @@ protocol AddListMarkprotocol{
     
     func mark(index: Int)
     func unmark(index: Int)
-    
     func itemname(name: String, index: Int?)
 }
 
@@ -146,7 +145,6 @@ extension AddListViewCellTableViewCell{
     }
     
     func animate(ismarked: Bool) {
-        print("asdfg")
         
         //let mark = UIImage(systemName: "checkmark.circle.fill")
         //let unmark = UIImage(systemName: "circle")

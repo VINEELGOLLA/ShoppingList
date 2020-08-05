@@ -91,7 +91,7 @@ class ListDetailTopView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         //stack.alignment = .fill
         stack.distribution = .fillProportionally
-        stack.backgroundColor = UIColor.systemPink
+        stack.backgroundColor = UIColor.white
         //stack.spacing = 10
         return stack
     }()

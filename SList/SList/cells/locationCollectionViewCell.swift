@@ -1,62 +1,66 @@
 //
-//  HomeTableViewCell.swift
+//  locationCollectionViewCell.swift
 //  SList
 //
-//  Created by naga vineel golla on 7/18/20.
+//  Created by naga vineel golla on 8/3/20.
 //  Copyright © 2020 naga vineel golla. All rights reserved.
 //
 
 import UIKit
 
-class HomeTableViewCell: UICollectionViewCell {
-    
+class locationCollectionViewCell: UICollectionViewCell {
     static var identifier: String = "Cell"
     
-    lazy var listname : UILabel = {
+    lazy var current : UILabel = {
+        let listname = UILabel()
+        listname.translatesAutoresizingMaskIntoConstraints = false
+
+        listname.text = "Currently in walmart"
+        listname.textColor = UIColor.white
+        //listname.numberOfLines = 0
+        //listname.adjustsFontSizeToFitWidth = true
+        listname.font = UIFont(name: "Arial Rounded MT Bold", size: 20)
+        return listname
+    }()
+    
+    lazy var listitems : UILabel = {
            let listname = UILabel()
            listname.translatesAutoresizingMaskIntoConstraints = false
 
-           listname.text = "List1"
-           listname.textColor = UIColor.black
-           listname.numberOfLines = 0
-           listname.adjustsFontSizeToFitWidth = true
+           listname.text = "24 Items"
+           listname.textColor = UIColor.systemBlue
+           //listname.numberOfLines = 0
+           //listname.adjustsFontSizeToFitWidth = true
            listname.font = UIFont.boldSystemFont(ofSize:18)
            return listname
        }()
        
-       lazy var shopname: UILabel = {
+       lazy var listname: UILabel = {
           let shopname = UILabel()
            shopname.translatesAutoresizingMaskIntoConstraints = false
            
-           shopname.text = "Reminder set for Walmart Supercenter"
-           shopname.textColor = UIColor.systemBlue
-           shopname.numberOfLines = 0
-           shopname.adjustsFontSizeToFitWidth = true
-           shopname.font = UIFont.systemFont(ofSize: 12)
+           shopname.text = "Grocery List"
+           shopname.textColor = UIColor.white
+           //shopname.numberOfLines = 0
+           //shopname.adjustsFontSizeToFitWidth = true
+           shopname.font = UIFont(name: "Arial Rounded MT Bold", size: 15)
            return shopname
        }()
        
-       lazy var numberofitems : UILabel = {
+       lazy var time : UILabel = {
            let numberofitems = UILabel()
            
            numberofitems.translatesAutoresizingMaskIntoConstraints = false
 
-           numberofitems.text = "2 pending items"
-           numberofitems.textColor = UIColor.gray
+           numberofitems.text = "closes in 1 hour"
+           numberofitems.textColor = UIColor.white
            numberofitems.numberOfLines = 0
            numberofitems.adjustsFontSizeToFitWidth = true
            numberofitems.font = UIFont.systemFont(ofSize: 15)
            return numberofitems
            
        }()
-    
-    lazy var image1 : UIImageView = {
-        let image1 = UIImageView()
-        image1.translatesAutoresizingMaskIntoConstraints = false
-        image1.image = UIImage(systemName: "chevron.right")
-        image1.tintColor = UIColor.gray
-        return image1
-    }()
+
     
     let topstack: UIStackView = {
         let stack = UIStackView()
@@ -90,31 +94,25 @@ class HomeTableViewCell: UICollectionViewCell {
     
     func setupviews() {
         addSubview(topstack)
-        addSubview(image1)
         addSubview(progressBar)
         
+        topstack.addArrangedSubview(current)
+        topstack.addArrangedSubview(time)
+        topstack.addArrangedSubview(listitems)
         topstack.addArrangedSubview(listname)
-        topstack.addArrangedSubview(shopname)
-        topstack.addArrangedSubview(numberofitems)
-        
-        topstack.backgroundColor = UIColor.white
                 
         // topstack.
+        topstack.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
         topstack.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        topstack.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         topstack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        //topstack.trailingAnchor.constraint(equalTo: progressBar.leadingAnchor, constant: -30).isActive = true
 
-        topstack.setCustomSpacing(10, after: listname)
-        topstack.setCustomSpacing(10, after: shopname)
+        topstack.setCustomSpacing(8, after: current)
+        topstack.setCustomSpacing(14, after: time)
+        topstack.setCustomSpacing(8, after: listitems)
         
-        image1.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        image1.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
-        image1.widthAnchor.constraint(equalToConstant: 13).isActive = true
-        image1.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        progressBar.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        progressBar.trailingAnchor.constraint(equalTo: image1.leadingAnchor, constant: -20).isActive = true
+        progressBar.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
+        progressBar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         progressBar.widthAnchor.constraint(equalToConstant: 40).isActive = true
         progressBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
 
@@ -126,4 +124,5 @@ class HomeTableViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 

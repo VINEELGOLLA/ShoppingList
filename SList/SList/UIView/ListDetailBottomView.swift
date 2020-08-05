@@ -18,19 +18,14 @@ class ListDetailBottomView: UIView {
     let tableView = UITableView()
     
     
-    
-    
     override init(frame: CGRect) {
          super.init(frame: frame)
         
           
             self.backgroundColor = UIColor.white
 
-
             setupviews()
-         
 
-            
         }
         
         required init?(coder: NSCoder) {
@@ -50,7 +45,10 @@ extension ListDetailBottomView{
         tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
-        tableView.register(AddListViewCellTableViewCell.self, forCellReuseIdentifier: "Cell2")
+        tableView.register(AddListViewCellTableViewCell.self, forCellReuseIdentifier: "Cell1")
+        
+        tableView.register(AddList2TableViewCell.self, forCellReuseIdentifier: "Cell2")
+
         
         tableView.separatorColor = UIColor.gray
         tableView.sectionIndexBackgroundColor = UIColor.white
@@ -58,7 +56,7 @@ extension ListDetailBottomView{
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
         
         
-        tableView.tableFooterView = UIView()
+        //tableView.tableFooterView = UIView()
 
         
         

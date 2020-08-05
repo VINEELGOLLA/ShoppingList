@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeTableViewCell: UITableViewCell {
+class HomeTableViewCell: UICollectionViewCell {
     
     static var identifier: String = "Cell"
     
@@ -81,8 +81,8 @@ class HomeTableViewCell: UITableViewCell {
     }()
     
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+           super.init(frame: frame)
         
         setupviews()
     }
@@ -96,6 +96,8 @@ class HomeTableViewCell: UITableViewCell {
         topstack.addArrangedSubview(listname)
         topstack.addArrangedSubview(shopname)
         topstack.addArrangedSubview(numberofitems)
+        
+        topstack.backgroundColor = UIColor.white
                 
         // topstack.
         topstack.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

@@ -145,7 +145,6 @@ extension AddListViewCellTableViewCell{
     }
     
     func animate(ismarked: Bool) {
-        print("asdfg")
         
         //let mark = UIImage(systemName: "checkmark.circle.fill")
         //let unmark = UIImage(systemName: "circle")

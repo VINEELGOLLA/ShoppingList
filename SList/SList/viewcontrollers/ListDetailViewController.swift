@@ -18,8 +18,8 @@ class ListDetailViewController: UIViewController {
     var mainlist : MainList?
     var count: Int = 0
     var nlist : ListData?
-
-
+    
+    var headerHeightConstraint:NSLayoutConstraint!
 
 
     
@@ -57,13 +57,12 @@ class ListDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(mainlist?.itemdata)
+        //print(mainlist?.itemdata)
 
         //
         self.navigationController?.navigationBar.shadowImage = UIImage()
         //self.navigationController?.toolbar.shadowImage(forToolbarPosition: .)
         topView.segmented.addTarget(self, action:  #selector(EditListViewController.indexChanged(_:)), for: .valueChanged)
-
         
     }
     
@@ -128,14 +127,24 @@ extension ListDetailViewController{
         
         navigationItem.rightBarButtonItem?.tintColor = UIColor.systemBlue
         
-    
-        
     }
     func setupview() {
+        view.addSubview(topView)
         view.addSubview(bottomView)
         
+        topView.translatesAutoresizingMaskIntoConstraints = false
         
-        bottomView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        headerHeightConstraint = topView.heightAnchor.constraint(equalToConstant: 150)
+        headerHeightConstraint.isActive = true
+        topView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        topView.topAnchor.constraint(equalTo: view.topAnchor, constant: 140).isActive = true
+        topView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        topView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        
+
+        
+        
+        bottomView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 0).isActive = true
         bottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
@@ -156,35 +165,35 @@ extension ListDetailViewController{
 
 extension ListDetailViewController : UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-        let lol = UIView()
-        lol.translatesAutoresizingMaskIntoConstraints = false
-        lol.addSubview(topView)
-
-        lol.heightAnchor.constraint(equalToConstant: 80).isActive = true
-
-        return lol
-        }
-        if section == 1{
-            let lol = UIView()
-            lol.translatesAutoresizingMaskIntoConstraints = false
-            lol.heightAnchor.constraint(equalToConstant: 0).isActive = true
-            lol.backgroundColor = UIColor.white
-            return lol
-        }
-        return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 80
-        }
-        else
-        {
-            return 0
-        }
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        if section == 0 {
+//        let lol = UIView()
+//        lol.translatesAutoresizingMaskIntoConstraints = false
+//        lol.addSubview(topView)
+//
+//        lol.heightAnchor.constraint(equalToConstant: 80).isActive = true
+//
+//        return lol
+//        }
+//        if section == 1{
+//            let lol = UIView()
+//            lol.translatesAutoresizingMaskIntoConstraints = false
+//            lol.heightAnchor.constraint(equalToConstant: 0).isActive = true
+//            lol.backgroundColor = UIColor.white
+//            return lol
+//        }
+//        return UIView()
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if section == 0 {
+//            return 80
+//        }
+//        else
+//        {
+//            return 0
+//        }
+//    }
    
     
     
@@ -279,7 +288,6 @@ extension ListDetailViewController: AddList2protocol{
 
             count = 0
             nlist = nil
-            print(nlist)
             bottomView.tableView.reloadData()
             //tableView.reloadData()
         }
@@ -361,4 +369,6 @@ extension ListDetailViewController: editlist{
     
     
 }
+
+
 

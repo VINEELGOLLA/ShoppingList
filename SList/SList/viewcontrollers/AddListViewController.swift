@@ -312,8 +312,8 @@ extension AddListViewController : UITextFieldDelegate {
         
         if textField.tag == 3{
             listname = textField.text
-            print(listname)
-            return true
+            //print(listname)
+            //return true
         }
      
        
@@ -367,7 +367,7 @@ extension AddListViewController: AddList2protocol{
 
             count = 0
             nlist = nil
-            print(nlist)
+            //print(nlist)
             tableView.reloadData()
         }
         else{

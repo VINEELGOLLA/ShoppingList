@@ -90,7 +90,7 @@ class HomeTableViewCell: UICollectionViewCell {
     
     func setupviews() {
         addSubview(topstack)
-        addSubview(image1)
+        //addSubview(image1)
         addSubview(progressBar)
         
         topstack.addArrangedSubview(listname)
@@ -107,14 +107,14 @@ class HomeTableViewCell: UICollectionViewCell {
 
         topstack.setCustomSpacing(10, after: listname)
         topstack.setCustomSpacing(10, after: shopname)
-        
-        image1.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        image1.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
-        image1.widthAnchor.constraint(equalToConstant: 13).isActive = true
-        image1.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//
+//        image1.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+//        image1.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+//        image1.widthAnchor.constraint(equalToConstant: 13).isActive = true
+//        image1.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         progressBar.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        progressBar.trailingAnchor.constraint(equalTo: image1.leadingAnchor, constant: -20).isActive = true
+        progressBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         progressBar.widthAnchor.constraint(equalToConstant: 40).isActive = true
         progressBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
 

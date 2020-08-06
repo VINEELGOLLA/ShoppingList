@@ -16,7 +16,7 @@ class locationCollectionViewCell: UICollectionViewCell {
         listname.translatesAutoresizingMaskIntoConstraints = false
 
         listname.text = "Currently in walmart"
-        listname.textColor = UIColor.white
+        listname.textColor = UIColor.black
         //listname.numberOfLines = 0
         //listname.adjustsFontSizeToFitWidth = true
         listname.font = UIFont(name: "Arial Rounded MT Bold", size: 20)
@@ -40,7 +40,7 @@ class locationCollectionViewCell: UICollectionViewCell {
            shopname.translatesAutoresizingMaskIntoConstraints = false
            
            shopname.text = "Grocery List"
-           shopname.textColor = UIColor.white
+           shopname.textColor = UIColor.black
            //shopname.numberOfLines = 0
            //shopname.adjustsFontSizeToFitWidth = true
            shopname.font = UIFont(name: "Arial Rounded MT Bold", size: 15)
@@ -53,7 +53,7 @@ class locationCollectionViewCell: UICollectionViewCell {
            numberofitems.translatesAutoresizingMaskIntoConstraints = false
 
            numberofitems.text = "closes in 1 hour"
-           numberofitems.textColor = UIColor.white
+           numberofitems.textColor = UIColor.black
            numberofitems.numberOfLines = 0
            numberofitems.adjustsFontSizeToFitWidth = true
            numberofitems.font = UIFont.systemFont(ofSize: 15)

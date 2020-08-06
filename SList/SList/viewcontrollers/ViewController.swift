@@ -98,7 +98,7 @@ class ViewController: UICollectionViewController {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
             cell.layer.cornerRadius = 10
-            cell.backgroundColor = UIColor(red: 12/255, green: 0/255, blue: 0/255, alpha: 1)
+            cell.backgroundColor = UIColor.white
             
             cell.layer.addShadow()
 
@@ -118,6 +118,14 @@ class ViewController: UICollectionViewController {
         
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            let lol = ListDetailViewController()
+            lol.mainlist = flist[0]
+            navigationController?.pushViewController(lol, animated: true)
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             print(indexPath.row)
@@ -134,14 +142,7 @@ class ViewController: UICollectionViewController {
         return footer
     }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offSet = scrollView.contentOffset.x
-        print("ll \(offSet)")
-        let width = scrollView.frame.width
-        let horizontalCenter = width / 3
 
-        //Footer.setcurrentpage(ind:Int(offSet + horizontalCenter) / Int(width))
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -159,7 +160,7 @@ class ViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.backgroundColor = UIColor.systemGray6
+        collectionView.backgroundColor = UIColor.white
         
         collectionView.register(locationCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.register(HomeTableViewCell.self, forCellWithReuseIdentifier: "Cell2")
@@ -213,8 +214,8 @@ class ViewController: UICollectionViewController {
 extension ViewController: AddlistProtocol{
     func finallist(list: MainList) {
         
-//        flist.append(list)
-//        tableView.reloadData()
+        flist.append(list)
+        collectionView.reloadData()
     }
     
     
@@ -259,10 +260,10 @@ class Footer : UICollectionReusableView {
 
 extension CALayer {
     func addShadow() {
-        self.shadowOffset = CGSize(width: 0, height: 2)
+        self.shadowOffset = CGSize(width: 0, height: 4)
         self.shadowOpacity = 0.5
-        self.shadowRadius = 5
-        self.shadowColor = UIColor.black.cgColor
+        self.shadowRadius = 8
+        self.shadowColor = UIColor.lightGray.cgColor
         self.masksToBounds = false
        
     }

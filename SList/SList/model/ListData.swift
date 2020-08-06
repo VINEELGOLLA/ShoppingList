@@ -28,4 +28,3 @@ struct ListData {
         self.mark = mark
     }
 }
- 

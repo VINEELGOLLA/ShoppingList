@@ -22,6 +22,10 @@
 		EF241C9524C3803E00F0CDB0 /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C9424C3803E00F0CDB0 /* CircularProgress.swift */; };
 		EF241C9724C380CE00F0CDB0 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C9624C380CE00F0CDB0 /* AddListViewController.swift */; };
 		EF241C9924C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF241C9824C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift */; };
+		EF2B5FA224DB138A004C203F /* EditMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2B5FA124DB138A004C203F /* EditMainViewController.swift */; };
+		EF2B5FA524DB1A21004C203F /* listMainNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2B5FA424DB1A21004C203F /* listMainNameTableViewCell.swift */; };
+		EF2B5FA724DB1C37004C203F /* EditMainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2B5FA624DB1C37004C203F /* EditMainListView.swift */; };
+		EF2B5FA924DB215B004C203F /* locationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2B5FA824DB215B004C203F /* locationTableViewCell.swift */; };
 		EF401DBC24CFD8D600D3BFFD /* UIButtonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF401DBB24CFD8D600D3BFFD /* UIButtonExtention.swift */; };
 		EF401DBF24D0DF7900D3BFFD /* EditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF401DBE24D0DF7900D3BFFD /* EditListView.swift */; };
 		EF401DC324D27D6100D3BFFD /* listNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF401DC224D27D6100D3BFFD /* listNameTableViewCell.swift */; };
@@ -88,6 +92,10 @@
 		EF241C9424C3803E00F0CDB0 /* CircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
 		EF241C9624C380CE00F0CDB0 /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		EF241C9824C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		EF2B5FA124DB138A004C203F /* EditMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMainViewController.swift; sourceTree = "<group>"; };
+		EF2B5FA424DB1A21004C203F /* listMainNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listMainNameTableViewCell.swift; sourceTree = "<group>"; };
+		EF2B5FA624DB1C37004C203F /* EditMainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMainListView.swift; sourceTree = "<group>"; };
+		EF2B5FA824DB215B004C203F /* locationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationTableViewCell.swift; sourceTree = "<group>"; };
 		EF401DBB24CFD8D600D3BFFD /* UIButtonExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtention.swift; sourceTree = "<group>"; };
 		EF401DBE24D0DF7900D3BFFD /* EditListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListView.swift; sourceTree = "<group>"; };
 		EF401DC224D27D6100D3BFFD /* listNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 		EF241C5924C37CAA00F0CDB0 /* SList */ = {
 			isa = PBXGroup;
 			children = (
+				EF2B5FA324DB19F4004C203F /* EditMainViewCells */,
 				EF401DC124D27D2200D3BFFD /* EditViewCells */,
 				EF401DBD24D0DF2500D3BFFD /* UIView */,
 				EF401DBA24CFD8B200D3BFFD /* ButtonAnimation */,
@@ -230,8 +239,18 @@
 				EF7E861A24C7A78000C9C7A7 /* BottomSheetFavoriteViewController.swift */,
 				EF65185D24CB85C000413E93 /* EditListViewController.swift */,
 				EF77780B24D63A5000691DB4 /* ListDetailViewController.swift */,
+				EF2B5FA124DB138A004C203F /* EditMainViewController.swift */,
 			);
 			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		EF2B5FA324DB19F4004C203F /* EditMainViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				EF2B5FA424DB1A21004C203F /* listMainNameTableViewCell.swift */,
+				EF2B5FA824DB215B004C203F /* locationTableViewCell.swift */,
+			);
+			path = EditMainViewCells;
 			sourceTree = "<group>";
 		};
 		EF401DBA24CFD8B200D3BFFD /* ButtonAnimation */ = {
@@ -250,6 +269,7 @@
 				EF77780D24D63AC300691DB4 /* ListDetailTopView.swift */,
 				EF77780F24D66CD700691DB4 /* ListDetailBottomView.swift */,
 				EF77781124D8D47000691DB4 /* mainbottomView.swift */,
+				EF2B5FA624DB1C37004C203F /* EditMainListView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -420,6 +440,7 @@
 			files = (
 				EF7E861124C68D4000C9C7A7 /* MapPin.swift in Sources */,
 				EF241C9924C385EE00F0CDB0 /* AddListViewCellTableViewCell.swift in Sources */,
+				EF2B5FA924DB215B004C203F /* locationTableViewCell.swift in Sources */,
 				EF77781424D8E48B00691DB4 /* locationCollectionViewCell.swift in Sources */,
 				EF241C5F24C37CAA00F0CDB0 /* ViewController.swift in Sources */,
 				EF241C9524C3803E00F0CDB0 /* CircularProgress.swift in Sources */,
@@ -433,7 +454,9 @@
 				EF7E861D24C7B9C100C9C7A7 /* FavoriteTableViewCell.swift in Sources */,
 				EF029B6824C4F20800C3C4ED /* MapViewController.swift in Sources */,
 				EF401DCD24D27DD000D3BFFD /* notesTableViewCell.swift in Sources */,
+				EF2B5FA524DB1A21004C203F /* listMainNameTableViewCell.swift in Sources */,
 				EF241C9324C37F6600F0CDB0 /* HomeTableViewCell.swift in Sources */,
+				EF2B5FA724DB1C37004C203F /* EditMainListView.swift in Sources */,
 				EF241C6524C37CAB00F0CDB0 /* SList.xcdatamodeld in Sources */,
 				EF401DC924D27DAD00D3BFFD /* Favorite2TableViewCell.swift in Sources */,
 				EF241C5B24C37CAA00F0CDB0 /* AppDelegate.swift in Sources */,
@@ -447,6 +470,7 @@
 				EF65185824CA1D0800413E93 /* AddList2TableViewCell.swift in Sources */,
 				EF1C337E24C64B43000D1DAD /* SearchTableViewCell.swift in Sources */,
 				EF401DC524D27D7B00D3BFFD /* QuatityTypeTableViewCell.swift in Sources */,
+				EF2B5FA224DB138A004C203F /* EditMainViewController.swift in Sources */,
 				EF7E861324C6982600C9C7A7 /* BottomSheetViewController.swift in Sources */,
 				EF77780E24D63AC300691DB4 /* ListDetailTopView.swift in Sources */,
 				EF7E861B24C7A78000C9C7A7 /* BottomSheetFavoriteViewController.swift in Sources */,

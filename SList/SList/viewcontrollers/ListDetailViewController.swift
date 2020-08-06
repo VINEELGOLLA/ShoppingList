@@ -123,10 +123,15 @@ extension ListDetailViewController{
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20.0, weight: .heavy, scale: .medium)
         let symbol = UIImage(systemName: "ellipsis", withConfiguration: symbolConfig)
     
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: symbol, style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: symbol, style: .plain, target: self, action: #selector(edit))
         
         navigationItem.rightBarButtonItem?.tintColor = UIColor.systemBlue
         
+    }
+    
+    @objc func edit(){
+        let lol = EditMainViewController()
+        present(lol, animated: true, completion: nil)
     }
     func setupview() {
         view.addSubview(topView)
